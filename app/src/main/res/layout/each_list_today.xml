@@ -48,11 +48,29 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_weight=".1"
-        android:gravity="center">
+        android:gravity="center_vertical|center_horizontal">
 
         <com.beardedhen.androidbootstrap.BootstrapButton
+            android:id="@+id/bEdit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:text="Edit"
+            android:textStyle="normal"
+            app:bootstrapBrand="warning"
+            app:bootstrapSize="md"
+            app:buttonMode="regular"
+            app:roundedCorners="true"
+            app:showOutline="false" />
+
+        <com.beardedhen.androidbootstrap.BootstrapButton
+            android:id="@+id/bRemove"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="false"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/bEdit"
             android:text="Remove"
             android:textStyle="normal"
             app:bootstrapBrand="danger"
@@ -60,6 +78,7 @@
             app:buttonMode="regular"
             app:roundedCorners="true"
             app:showOutline="false" />
+
 
     </RelativeLayout>
 
