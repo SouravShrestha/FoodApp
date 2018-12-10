@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
     tools:context=".FragmentToday">
 
     <!-- TODO: Update blank fragment layout -->
@@ -35,20 +36,16 @@
             android:stretchMode="none" >
 
         </ListView>
-        <android.support.design.widget.FloatingActionButton
-            android:id="@+id/floatingActionButton"
-            android:layout_width="56dp"
-            android:layout_height="56dp"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_margin="20dp"
-            android:clickable="true"
-            android:padding="16dp"
-            android:scaleType="center"
-            app:backgroundTint="@color/colorIndicator"
-            app:fabSize="normal"
-            app:maxImageSize="24dp"
-            app:srcCompat="@drawable/add" />
+
+        <com.github.ag.floatingactionmenu.OptionsFabLayout
+            android:id="@+id/fab_l"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:src="@drawable/add"
+            custom:color="@color/colorAccent"
+            custom:options_color="@color/colorPrimary"
+            custom:options_menu="@menu/fab_menu" />
+
     </RelativeLayout>
 
 </FrameLayout>
