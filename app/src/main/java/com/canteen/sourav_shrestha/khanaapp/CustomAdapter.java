@@ -39,8 +39,8 @@ class MyAdapter extends BaseAdapter {
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
         LayoutInflater inflater = LayoutInflater.from(context);
-        view = inflater.inflate(R.layout.each_list_today,null);
-        TextView title = view.findViewById(R.id.textItemToday);
+        view = inflater.inflate(R.layout.each_list_layout,null);
+        TextView title = view.findViewById(R.id.textItem);
         title.setText(listNameItem.get(i));
         TextView tPrice = view.findViewById(R.id.textItemPrice);
         tPrice.setText("Price : "+listPriceItem.get(i));

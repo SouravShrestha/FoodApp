@@ -18,7 +18,7 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
         }
         else if (position == 1)
         {
-            fragment = new TomorrowFragment();
+            fragment = new FragmentTomorrow();
         }
         else if (position == 2)
         {

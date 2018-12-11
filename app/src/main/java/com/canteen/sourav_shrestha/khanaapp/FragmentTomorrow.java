@@ -33,7 +33,7 @@ import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FragmentToday extends Fragment {
+public class FragmentTomorrow extends Fragment {
 
     public ArrayList<String> listNameLunch;
     public ArrayList<String> listIdLunch;
@@ -47,22 +47,22 @@ public class FragmentToday extends Fragment {
     OptionsFabLayout floatingActionButton;
     MyAdapterLunch adaperLunch;
     MyAdapterDinner adapterDinner;
-    ListView listTodayLunch;
-    ListView listTodayDinner;
-    static final String queryToday = "SELECT product_name,product_price,p.product_id,t.lunch,t.dinner FROM todays_meal t,table_product p WHERE " +
+    ListView listTomorrowLunch;
+    ListView listTomorrowDinner;
+    static final String queryTomorrow = "SELECT product_name,product_price,p.product_id,t.lunch,t.dinner FROM tomorrow_meal t,table_product p WHERE " +
             "p.product_id = t.product_id;";
-    static final String queryDeleteToday = "DELETE FROM todays_meal where product_id ='";
-    static final String queryTodayCheck = "SELECT product_name,product_id,product_price FROM table_product;";
-    static final String queryAddItems = "INSERT INTO todays_meal VALUES('";
-    static final String queryUpdateItems = "UPDATE todays_meal SET dinner=1,lunch=1 WHERE product_id='";
-    static final String queryUpdateItemSingle = "UPDATE todays_meal SET dinner='";
+    static final String queryDeleteTomorrow = "DELETE FROM tomorrow_meal where product_id ='";
+    static final String queryTomorrowCheck = "SELECT product_name,product_id,product_price FROM table_product;";
+    static final String queryAddItems = "INSERT INTO tomorrow_meal VALUES('";
+    static final String queryUpdateItems = "UPDATE tomorrow_meal SET dinner=1,lunch=1 WHERE product_id='";
+    static final String queryUpdateItemSingle = "UPDATE tomorrow_meal SET dinner='";
 
-    public FragmentToday(){
+    public FragmentTomorrow(){
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_fragment_today, container, false);
+        View view = inflater.inflate(R.layout.fragment_fragment_tomorrow, container, false);
         listNameLunch = new ArrayList<>();
         listPriceLunch = new ArrayList<>();
         listNameDinner = new ArrayList<>();
@@ -74,14 +74,14 @@ public class FragmentToday extends Fragment {
         listIdLunch = new ArrayList<>();
         listIdLunch = new ArrayList<>();
         Log.d("timeItem","OnCreate");
-        new FragmentToday.TodayMenu().execute();
-        floatingActionButton = view.findViewById(R.id.fab_l);
-        listTodayLunch = view.findViewById(R.id.list_today_menu);
-        listTodayDinner = view.findViewById(R.id.list_dinner_today);
+        new FragmentTomorrow.TomorrowMenu().execute();
+        floatingActionButton = view.findViewById(R.id.fab_lTomorrow);
+        listTomorrowLunch = view.findViewById(R.id.list_tomorrow_menu);
+        listTomorrowDinner = view.findViewById(R.id.list_dinner_tomorrow);
         adaperLunch = new MyAdapterLunch(getContext(), listNameLunch, listPriceLunch);
         adapterDinner = new MyAdapterDinner(getContext(),listNameDinner,listPriceDinner);
-        listTodayDinner.setAdapter(adapterDinner);
-        listTodayLunch.setAdapter(adaperLunch);
+        listTomorrowDinner.setAdapter(adapterDinner);
+        listTomorrowLunch.setAdapter(adaperLunch);
 
         floatingActionButton.setMainFabOnClickListener(new View.OnClickListener() {
             @Override
@@ -96,7 +96,7 @@ public class FragmentToday extends Fragment {
                 switch (fabItem.getItemId()) {
                     case R.id.lunchAdd:
                         listCheckItems.clear();
-                        new TodayAddCheckLunch().execute();
+                        new TomorrowAddCheckLunch().execute();
                         new LovelyChoiceDialog(getContext(), R.style.TintTheme)
                                 .setTopColorRes(R.color.colorPrimary)
                                 .setTitle("ADD LUNCH ITEMS")
@@ -105,7 +105,7 @@ public class FragmentToday extends Fragment {
                                     public void onItemsSelected(List<Integer> positions, List<String> items) {
                                         for(String item : items){
                                             String idC = listCheckItemsID.get(listCheckItems.indexOf(item));
-                                            new TodayMenuAdd().execute(idC,"1 0",item+"&"+listCheckItemsPrice.get(listCheckItems.indexOf(item)));
+                                            new TomorrowMenuAdd().execute(idC,"1 0",item+"&"+listCheckItemsPrice.get(listCheckItems.indexOf(item)));
                                             floatingActionButton.closeOptionsMenu();
                                             adaperLunch.notifyDataSetChanged();
                                         }
@@ -116,7 +116,7 @@ public class FragmentToday extends Fragment {
                         break;
                     case R.id.dinnnerAdd:
                         listCheckItems.clear();
-                        new TodayAddCheckDinner().execute();
+                        new TomorrowAddCheckDinner().execute();
                         new LovelyChoiceDialog(getContext(), R.style.TintTheme)
                                 .setTopColorRes(R.color.colorPrimary)
                                 .setTitle("ADD DINNER ITEMS")
@@ -125,7 +125,7 @@ public class FragmentToday extends Fragment {
                                     public void onItemsSelected(List<Integer> positions, List<String> items) {
                                         for(String item : items){
                                             String idC = listCheckItemsID.get(listCheckItems.indexOf(item));
-                                            new TodayMenuAdd().execute(idC,"0 1",item+"&"+listCheckItemsPrice.get(listCheckItems.indexOf(item)));
+                                            new TomorrowMenuAdd().execute(idC,"0 1",item+"&"+listCheckItemsPrice.get(listCheckItems.indexOf(item)));
                                             floatingActionButton.closeOptionsMenu();
                                             adapterDinner.notifyDataSetChanged();
                                         }
@@ -143,7 +143,7 @@ public class FragmentToday extends Fragment {
         return view;
     }
 
-    class TodayMenu extends AsyncTask {
+    class TomorrowMenu extends AsyncTask {
 
         String sb="";
 
@@ -158,7 +158,7 @@ public class FragmentToday extends Fragment {
             try {
                 URL url = new URL(link);
                 String data  = URLEncoder.encode("khana", "UTF-8")
-                        + "=" + URLEncoder.encode(queryToday, "UTF-8");
+                        + "=" + URLEncoder.encode(queryTomorrow, "UTF-8");
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                 conn.setDoInput(true);
                 conn.setDoOutput(true);
@@ -206,7 +206,7 @@ public class FragmentToday extends Fragment {
     }
 
 
-    class TodayMenuDelete extends AsyncTask<String, String, String> {
+    class TomorrowMenuDelete extends AsyncTask<String, String, String> {
 
         String sb="";
         String id,lunch,dinner;
@@ -229,7 +229,7 @@ public class FragmentToday extends Fragment {
                             + "=" + URLEncoder.encode(queryUpdateItemSingle+dinner+"',lunch='"+lunch+"'WHERE product_id='"+id+"';", "UTF-8");
                 else
                     data  = URLEncoder.encode("khana", "UTF-8")
-                        + "=" + URLEncoder.encode(queryDeleteToday+id+"';", "UTF-8");HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                            + "=" + URLEncoder.encode(queryDeleteTomorrow+id+"';", "UTF-8");HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                 conn.setDoInput(true);
                 conn.setDoOutput(true);
                 conn.setRequestMethod("POST");
@@ -259,7 +259,7 @@ public class FragmentToday extends Fragment {
     }
 
 
-    class TodayAddCheckLunch extends AsyncTask<String, String, String> {
+    class TomorrowAddCheckLunch extends AsyncTask<String, String, String> {
 
         String sb="";
         @Override
@@ -273,7 +273,7 @@ public class FragmentToday extends Fragment {
             try {
                 URL url = new URL(link);
                 String data  = URLEncoder.encode("khana", "UTF-8")
-                        + "=" + URLEncoder.encode(queryTodayCheck, "UTF-8");
+                        + "=" + URLEncoder.encode(queryTomorrowCheck, "UTF-8");
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                 conn.setDoInput(true);
                 conn.setDoOutput(true);
@@ -314,7 +314,7 @@ public class FragmentToday extends Fragment {
     }
 
 
-    class TodayAddCheckDinner extends AsyncTask<String, String, String> {
+    class TomorrowAddCheckDinner extends AsyncTask<String, String, String> {
 
         String sb="";
         @Override
@@ -328,7 +328,7 @@ public class FragmentToday extends Fragment {
             try {
                 URL url = new URL(link);
                 String data  = URLEncoder.encode("khana", "UTF-8")
-                        + "=" + URLEncoder.encode(queryTodayCheck, "UTF-8");
+                        + "=" + URLEncoder.encode(queryTomorrowCheck, "UTF-8");
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                 conn.setDoInput(true);
                 conn.setDoOutput(true);
@@ -366,7 +366,7 @@ public class FragmentToday extends Fragment {
         }
     }
 
-    class TodayMenuAdd extends AsyncTask<String, String, String> {
+    class TomorrowMenuAdd extends AsyncTask<String, String, String> {
 
         String sb="";
         String id,lunch,dinner;
@@ -506,12 +506,12 @@ public class FragmentToday extends Fragment {
                             .setTopColorRes(R.color.bootstrap_brand_danger)
                             .setButtonsColorRes(R.color.colorIndicator)
                             .setTitle("DELETE "+title.getText())
-                            .setMessage("Do You Really Want To Remove "+title.getText()+" From Today's Menu ?")
+                            .setMessage("Do You Really Want To Remove "+title.getText()+" From Tomorrow's Menu ?")
                             .setPositiveButton("Yes", new View.OnClickListener() {
                                 @Override
                                 public void onClick(View v) {
 //                                    Toast.makeText(context, "Positive Clicked", Toast.LENGTH_SHORT).show();
-                                    new TodayMenuDelete().execute(listIdLunch.get(i),"0","1");
+                                    new TomorrowMenuDelete().execute(listIdLunch.get(i),"0","1");
                                     listIdLunch.remove(i);
                                     listNameItem.remove(i);
                                     listPriceItem.remove(i);
@@ -599,12 +599,12 @@ public class FragmentToday extends Fragment {
                             .setTopColorRes(R.color.bootstrap_brand_danger)
                             .setButtonsColorRes(R.color.colorIndicator)
                             .setTitle("DELETE "+title.getText())
-                            .setMessage("Do You Really Want To Remove "+title.getText()+" From Today's Menu ?")
+                            .setMessage("Do You Really Want To Remove "+title.getText()+" From Tomorrow's Menu ?")
                             .setPositiveButton("Yes", new View.OnClickListener() {
                                 @Override
                                 public void onClick(View v) {
 //                                    Toast.makeText(context, "Positive Clicked", Toast.LENGTH_SHORT).show();
-                                    new TodayMenuDelete().execute(listIdDinner.get(i),"1","0");
+                                    new TomorrowMenuDelete().execute(listIdDinner.get(i),"1","0");
                                     listIdDinner.remove(i);
                                     listNameDinner.remove(i);
                                     listPriceDinner.remove(i);

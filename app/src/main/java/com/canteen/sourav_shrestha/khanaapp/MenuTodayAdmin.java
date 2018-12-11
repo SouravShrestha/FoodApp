@@ -21,6 +21,7 @@ public class MenuTodayAdmin extends AppCompatActivity {
         viewPager.setAdapter(viewPagerAdapter);
         SmartTabLayout viewPagerTab = findViewById(R.id.viewpagertab);
         viewPagerTab.setViewPager(viewPager);
+        viewPager.setOffscreenPageLimit(5);
     }
 
 }

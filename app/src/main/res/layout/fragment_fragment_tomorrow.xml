@@ -5,13 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:custom="http://schemas.android.com/apk/res-auto"
-    tools:context=".FragmentToday">
+    tools:context=".FragmentTomorrow">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <TextView
-            android:id="@+id/lableOne"
+            android:id="@+id/lableOneTomorrow"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingLeft="10dp"
@@ -23,10 +23,10 @@
             android:textStyle="bold" />
 
         <ListView
-            android:id="@+id/list_today_menu"
+            android:id="@+id/list_tomorrow_menu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/lableOne"
+            android:layout_below="@+id/lableOneTomorrow"
             android:divider="@android:color/transparent"
             android:dividerHeight="2sp"
             android:gravity="left"
@@ -36,7 +36,7 @@
 
 
         <TextView
-            android:id="@+id/lableDinner"
+            android:id="@+id/lableDinnerTomorrow"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingLeft="10dp"
@@ -44,15 +44,15 @@
             android:paddingRight="10dp"
             android:paddingBottom="5dp"
             android:text="Dinner Menu"
-            android:layout_below="@id/list_today_menu"
+            android:layout_below="@id/list_tomorrow_menu"
             android:textSize="16sp"
             android:textStyle="bold" />
 
         <ListView
-            android:id="@+id/list_dinner_today"
+            android:id="@+id/list_dinner_tomorrow"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/lableDinner"
+            android:layout_below="@+id/lableDinnerTomorrow"
             android:divider="@android:color/transparent"
             android:dividerHeight="2sp"
             android:gravity="left"
@@ -61,7 +61,7 @@
         </ListView>
 
         <com.github.ag.floatingactionmenu.OptionsFabLayout
-            android:id="@+id/fab_l"
+            android:id="@+id/fab_lTomorrow"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:src="@drawable/add"
