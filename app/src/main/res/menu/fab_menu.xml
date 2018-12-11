@@ -2,11 +2,11 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/lunchAdd"
-        android:icon="@drawable/vegetarian_symbol"
+        android:icon="@drawable/sunny"
         android:title="Add Lunch" />
 
     <item
         android:id="@+id/dinnnerAdd"
-        android:icon="@drawable/vegetarian_symbol"
+        android:icon="@drawable/night"
         android:title="Add Dinner" />
 </menu>

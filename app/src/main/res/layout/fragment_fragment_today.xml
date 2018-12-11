@@ -7,9 +7,11 @@
     xmlns:custom="http://schemas.android.com/apk/res-auto"
     tools:context=".FragmentToday">
 
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <TextView
             android:id="@+id/lableOne"
             android:layout_width="match_parent"
@@ -65,8 +67,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:src="@drawable/add"
-            custom:color="@color/colorAccent"
-            custom:options_color="@color/colorPrimary"
+            custom:color="@color/colorIndicator"
             custom:options_menu="@menu/fab_menu" />
 
     </RelativeLayout>

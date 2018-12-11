@@ -4,5 +4,7 @@
     <color name="colorPrimaryDark">#14212E</color>
     <color name="colorLight">#1E2B36</color>
     <color name="colorIndicator">#40C4FF</color>
+    <color name="whiteColor">#FFFFFF</color>
+    <color name="yellowSun">#FFDB2D</color>
     <color name="colorAccent">#22EDAD</color>
 </resources>

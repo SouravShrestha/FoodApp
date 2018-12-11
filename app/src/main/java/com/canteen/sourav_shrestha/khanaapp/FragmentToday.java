@@ -83,10 +83,12 @@ public class FragmentToday extends Fragment {
         listTodayDinner.setAdapter(adapterDinner);
         listTodayLunch.setAdapter(adaperLunch);
 
+        floatingActionButton.setMiniFabsColors(R.color.yellowSun,R.color.colorPrimary);
+
         floatingActionButton.setMainFabOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getContext(), "Main fab clicked!", Toast.LENGTH_SHORT).show();
+                floatingActionButton.closeOptionsMenu();
             }
         });
 
