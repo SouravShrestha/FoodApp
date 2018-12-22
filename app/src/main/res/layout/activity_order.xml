@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".orderSummary.Order">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="126dp"
+        android:background="#1E2B36">
+
+
+        <Spinner
+            android:id="@+id/category"
+            android:layout_width="337dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="29dp"
+            android:layout_marginTop="67dp"
+            android:layout_marginEnd="18dp"
+            android:layout_marginBottom="19dp"
+            android:background="#FFFFFF"
+            tools:background="#FFFFFF" />
+
+        <Spinner
+            android:id="@+id/meal_time"
+            android:layout_width="177dp"
+            android:layout_height="45dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="18dp"
+            android:background="#FFFFFF"
+            tools:background="#FFFFFF" />
+
+        <Button
+            android:id="@+id/date"
+            android:layout_width="128dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="27dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="34dp"
+            android:layout_marginBottom="68dp"
+            android:layout_toStartOf="@+id/meal_time"
+            android:background="@color/bootstrap_brand_success"
+            android:text="12/12/12"
+            android:textAppearance="@style/TextAppearance.AppCompat"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="144dp"
+        android:scrollbars="vertical"/>
+
+</RelativeLayout>
